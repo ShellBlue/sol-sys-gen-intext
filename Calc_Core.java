@@ -1,4 +1,4 @@
-package ver1_1;
+package ver1_2;
 import java.util.Scanner;
 import java.text.DecimalFormat;
 
@@ -94,13 +94,13 @@ import java.text.DecimalFormat;
 			//an array to hold the random decimals produced by the RandomizerMethod//
 			double randomCoef = 0;
 			double doubleHolder [][] = new double [10][10];
-			
+			randomCoef = RandomizerMethod(1.4,2.0);
 			do { 
 				
 				
 				for (int xAxis = 0; xAxis <doubleHolder.length; xAxis++) {
 					for (int yAxis = 0; yAxis <doubleHolder.length - 1; yAxis++) {
-						randomCoef = RandomizerMethod(1.4,2.0);
+				
 						doubleHolder[xAxis][yAxis] = randomCoef;
 						}
 					}
