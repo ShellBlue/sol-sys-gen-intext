@@ -1,4 +1,4 @@
-package ver1_2;
+package ver1_3;
 
 import java.awt.EventQueue;
 
@@ -35,11 +35,18 @@ import java.awt.FlowLayout;
 import java.awt.CardLayout;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.MatteBorder;
+import javax.swing.AbstractAction;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.FocusListener;
+
+import javax.swing.Action;
 
 public class TextSim_Display extends Calc_Core {
 
 	private JFrame frame;
 	private JTextField input_text_area;
+	private final Action action = new SwingAction();
 
 	/**
 	 * Launch the application.
@@ -113,8 +120,10 @@ public class TextSim_Display extends Calc_Core {
 		save_btn.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		
 		JButton clear_btn = new JButton("Clear");
+		clear_btn.setAction(action);
 		clear_btn.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		horizontalBox.add(clear_btn);
+	
 		
 		JPanel action_pan = new JPanel();
 		action_pan.setBorder(null);
@@ -231,7 +240,43 @@ public class TextSim_Display extends Calc_Core {
 		gbc_version_lbl.gridx = 0;
 		gbc_version_lbl.gridy = 0;
 		version_pan.add(version_lbl, gbc_version_lbl);
+	
+		clear_btn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				input_text_area.setText (" ");
+			}
+		}
+	);
+	
+		input_var_btn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				double stellarMass = Double.parseDouble(input_text_area.getText());
+				StarAttribute func = new Calc_Core.StarAttribute();
+				func.SolSysCalculator(stellarMass);
+				
+			}
+			
+		});
+	
 	}
 
-
+	
+	
+	
+	
+	
+	private class SwingAction extends AbstractAction {
+		public SwingAction() {
+			putValue(NAME, "SwingAction");
+			putValue(SHORT_DESCRIPTION, "Some short description");
+		}
+		public void actionPerformed(ActionEvent e) {
+		}
+	}
 }
