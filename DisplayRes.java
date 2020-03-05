@@ -64,14 +64,21 @@ public class DisplayRes {
 			ArrayList<String> res = new ArrayList<String>();
 			
 			while(iter.hasNext()) {
-				
-				String planDAUStr = "Inner Planet is "+iter.next()+" AU from the parent star. \n";
+				if(planParamList.size() >= 6) {
+				String habValNotifStr = ("Planet lies inside the Habitable Zone.");
+				res.add(habValNotifStr);
+				String starAppLum = ("The parent star is "+iter.next()+" times as bright as Sol on this planet.");
+				res.add(starAppLum);
+				String starSmallAngApprox =("The parent star takes up around "+iter.next()+" degrees of this planet's sky.");
+				res.add(starSmallAngApprox);
+				}
+				String planDAUStr = ("Inner Planet is "+iter.next()+" AU from the parent star. \n");
 				res.add(planDAUStr);
-				String planObliqStr = "This planet's obliquity is "+iter.next()+" degrees. \n";
+				String planObliqStr = ("This planet's obliquity is "+iter.next()+" degrees. \n");
 				res.add(planObliqStr);
-				String planEccStr = "This planet's eccentricity is "+iter.next()+" degrees. \n";
+				String planEccStr = ("This planet's eccentricity is "+iter.next()+" degrees. \n");
 				res.add(planEccStr);
-				String planInclinStr = "This planet's inclination is "+iter.next()+ "degrees. \n";
+				String planInclinStr = ("This planet's inclination is "+iter.next()+ "degrees. \n");
 				res.add(planInclinStr);
 				
 			}
